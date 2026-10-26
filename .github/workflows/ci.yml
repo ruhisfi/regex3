@@ -21,11 +21,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # The oldest and newest versions the project supports (see "engines" in package.json).
-        node: [22, 24]
+        # Every Node line the project supports (see "engines" in package.json).
+        node: [22, 24, 26]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node }}
           cache: npm
@@ -38,11 +38,20 @@ jobs:
     name: Docker image
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Build the image
         run: docker build -t regex3 .
       - name: Check that it serves the app
         run: |
           docker run -d --name regex3 -p 8080:8080 regex3
-          curl --fail --silent --show-error --retry 10 --retry-connrefused --retry-delay 1 http://localhost:8080/healthz
+          # Docker accepts connections on the published port before nginx is listening, and then resets them. curl's
+          # own --retry does not cover a reset, so wait for the health endpoint explicitly.
+          for _ in $(seq 1 30); do
+            curl --fail --silent --output /dev/null http://localhost:8080/healthz && break
+            sleep 1
+          done
+          curl --fail --silent --show-error http://localhost:8080/healthz
           curl --fail --silent --show-error http://localhost:8080/ | grep -q '<title>regex'
+      - name: Show the container log if that failed
+        if: failure()
+        run: docker logs regex3
