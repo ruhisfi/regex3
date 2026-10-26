@@ -1,0 +1,5 @@
+# Keep line endings as LF in the repository and on checkout, whatever the contributor's OS.
+* text=auto eol=lf
+
+*.woff2 binary
+*.png binary

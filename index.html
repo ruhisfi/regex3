@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>regex³</title>
+    <meta name="description" content="Write a regular expression, see its matches highlighted live, and read what each part does. Runs entirely in your browser." />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" id="theme-color" content="#ffffff" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="preload" href="./fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="./fonts/GeistMono-Variable.woff2" as="font" type="font/woff2" crossorigin />
+    <script src="./theme-init.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to Content</a>
+    <div class="app">
+      <header class="bar">
+        <h1 class="wordmark" translate="no">regex<sup>3</sup></h1>
+        <div class="bar-controls">
+          <div id="flavor" class="segmented" role="group" aria-label="Flavor"></div>
+          <button id="share" type="button" class="button">Copy Link</button>
+          <button id="theme-toggle" type="button" class="button icon-button" aria-label="Dark Theme" aria-pressed="false">
+            <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false">
+              <circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.5" />
+              <path d="M8 2a6 6 0 0 1 0 12z" fill="currentColor" />
+            </svg>
+          </button>
+          <button id="reference-toggle" type="button" class="button" aria-controls="reference" aria-expanded="true">Reference</button>
+        </div>
+        <span id="share-status" class="share-status" role="status"></span>
+      </header>
+
+      <main id="main" class="workbench" tabindex="-1">
+        <div class="stack">
+          <section class="panel panel-expression" aria-labelledby="expression-title">
+            <div class="panel-head">
+              <h2 id="expression-title"><label for="pattern-input">Expression</label></h2>
+            </div>
+            <div class="pattern-row" translate="no">
+              <span class="slash" aria-hidden="true">/</span>
+              <div id="pattern-field"></div>
+              <span class="slash" aria-hidden="true">/</span>
+              <span id="flag-summary" class="flag-summary" aria-hidden="true"></span>
+            </div>
+            <p id="pattern-status" class="status status-line" role="status"></p>
+            <div class="panel-foot">
+              <span id="flags-label" class="foot-label">Flags</span>
+              <div id="flags" class="flags" role="group" aria-labelledby="flags-label"></div>
+            </div>
+          </section>
+
+          <section class="panel panel-text" aria-labelledby="text-title">
+            <div class="panel-head">
+              <h2 id="text-title"><label for="text-input">Test Text</label></h2>
+              <p id="match-summary" class="status" role="status"></p>
+            </div>
+            <div id="text-field" translate="no"></div>
+          </section>
+
+          <section class="panel panel-tools" aria-label="Tools">
+            <div id="tool-tabs" class="tabs" role="tablist" aria-label="Tools"></div>
+            <div id="tool-panels"></div>
+          </section>
+        </div>
+      </main>
+
+      <aside id="reference" class="reference" aria-labelledby="reference-title">
+        <div class="reference-head">
+          <h2 id="reference-title">Reference</h2>
+          <label class="sr-only" for="reference-filter">Filter Reference</label>
+          <input id="reference-filter" class="line-input" type="search" placeholder="Filter Tokens…" autocomplete="off" spellcheck="false" />
+        </div>
+        <div id="reference-body" class="reference-body"></div>
+      </aside>
+
+      <footer class="site-footer">
+        <span translate="no">regex³ by <a href="https://ruhis.fi" target="_blank" rel="noopener noreferrer">Ruhis<span class="sr-only"> (opens in a new tab)</span></a></span>
+        <a href="https://github.com/ruhisfi/regex3" target="_blank" rel="noopener noreferrer"><span translate="no">GitHub</span><span class="sr-only"> (opens in a new tab)</span></a>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+/* Design tokens. Every color is a light-dark() pair, so switching theme only changes `color-scheme`. */
+:root {
+  color-scheme: light dark;
+
+  /* Surfaces, from the page background up to hovered controls. */
+  --bg: light-dark(#ffffff, #111113);
+  --bg-subtle: light-dark(#fafafa, #0b0b0d);
+  --bg-muted: light-dark(#f2f2f2, #1b1b1f);
+  --bg-hover: light-dark(#ebebeb, #26262b);
+
+  /* Semi-transparent borders stay crisp on every surface. */
+  --border: light-dark(rgb(0 0 0 / 0.09), rgb(255 255 255 / 0.11));
+  --border-strong: light-dark(rgb(0 0 0 / 0.2), rgb(255 255 255 / 0.3));
+
+  --text: light-dark(#171717, #ececef);
+  --text-muted: light-dark(#666666, #a1a1a1);
+
+  --accent: light-dark(#0068d6, #47a1ff);
+  --on-accent: light-dark(#ffffff, #000000);
+  --red: light-dark(#cd2b31, #ff6369);
+  --amber: light-dark(#9a5b00, #f5a524);
+  --green: light-dark(#18794e, #3dd68c);
+
+  /* Syntax roles in the pattern. */
+  --tk-escape: light-dark(#9a5b00, #f5a524);
+  --tk-set: light-dark(#18794e, #3dd68c);
+  --tk-quant: light-dark(#c2185b, #ff7eb6);
+  --tk-ref: light-dark(#7c3aed, #b79cff);
+  --tk-depth-0: light-dark(#0068d6, #47a1ff);
+  --tk-depth-1: light-dark(#7c3aed, #b79cff);
+  --tk-depth-2: light-dark(#18794e, #3dd68c);
+
+  /* Match tints and per-group underlines in the test text. */
+  --match-a: light-dark(rgb(0 104 214 / 0.13), rgb(71 161 255 / 0.2));
+  --match-b: light-dark(rgb(0 104 214 / 0.25), rgb(71 161 255 / 0.34));
+  --group-0: light-dark(#b45309, #f5a524);
+  --group-1: light-dark(#c2185b, #ff7eb6);
+  --group-2: light-dark(#18794e, #3dd68c);
+  --group-3: light-dark(#7c3aed, #b79cff);
+
+  --tip-bg: light-dark(#ffffff, #1f1f23);
+
+  --selection: light-dark(rgb(0 104 214 / 0.14), rgb(71 161 255 / 0.22));
+
+  /* Two shadow layers (ambient and direct) sit beside the border. */
+  --shadow-panel: 0 1px 2px light-dark(rgb(0 0 0 / 0.04), rgb(0 0 0 / 0.4)),
+    0 6px 12px -6px light-dark(rgb(0 0 0 / 0.06), rgb(0 0 0 / 0.5));
+  --shadow-toast: 0 2px 4px rgb(0 0 0 / 0.12), 0 12px 24px -8px rgb(0 0 0 / 0.3);
+
+  --font-sans: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, 'Geist Mono', 'SF Mono', 'Cascadia Code', Menlo, Consolas, 'Liberation Mono', monospace;
+
+  /* Small radii throughout; controls inside a panel use a smaller one so the curves stay concentric. */
+  --radius-panel: 8px;
+  --radius-control: 5px;
+  --radius-inner: 3px;
+
+  --field-size: 0.875rem;
+  --bar-height: 3.5rem;
+  --reference-width: 22.5rem;
+  --gutter: clamp(1rem, 3vw, 2rem);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+/* Browsers zoom into inputs under 16px, so touch devices get the larger size. */
+@media (pointer: coarse) {
+  :root {
+    --field-size: 1rem;
+  }
+}

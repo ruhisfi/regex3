@@ -1,0 +1,17 @@
+# Dependencies and build output
+node_modules
+dist
+*.tsbuildinfo
+coverage
+
+# Logs and local environment
+*.log
+.env
+.env.*
+
+# Editor and OS files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+Thumbs.db

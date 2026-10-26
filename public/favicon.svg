@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="7" fill="#111113"/>
+  <text x="5" y="23" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="20" font-weight="700" fill="#fff">r</text>
+  <text x="17" y="14" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13" font-weight="700" fill="#47a1ff">3</text>
+</svg>
