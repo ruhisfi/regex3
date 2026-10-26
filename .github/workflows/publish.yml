@@ -41,7 +41,7 @@ jobs:
 
       - name: Work out tags and labels
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         with:
           images: ghcr.io/${{ github.repository }}
           # 1.2.3 also publishes 1.2 and, from version 1 on, 1. "latest" is added for stable releases.
