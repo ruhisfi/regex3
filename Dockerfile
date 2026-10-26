@@ -2,7 +2,7 @@
 
 # The build only produces static files, so it always runs on the machine doing the build, whatever platform the
 # image is for. That keeps multi-platform builds fast: nothing here is emulated.
-FROM --platform=$BUILDPLATFORM node:24-alpine AS build
+FROM --platform=$BUILDPLATFORM node:26-alpine AS build
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
